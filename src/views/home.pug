@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title SDS meeting
+    body 
+        main 
+            div#welcome
+                form
+                    input(name="nickname", placeholder="Input your Nickname", required, type=text)
+                    input(placeholder="Input room ID", required, type=text)
+                    button Enter room
+
+            div#room 
+                h3
+                ul
+                div#stream
+                    video#myFace(autoplay, playsinline, width="400", height="400")
+                    button#mute Mute
+                    button#camera Turn Camera Off
+                    select#camera
+
+                form#msg
+                    input(placeholder="message",  type="text")
+                    button send 
+                
+                form#exit
+                    button exit
+                    
+
+        script(src="/socket.io/socket.io.js")
+        script(src="/public/js/app.js")
+
+        
