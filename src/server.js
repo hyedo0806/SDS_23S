@@ -21,12 +21,20 @@ function countRoom(roomName) {
 
 wsServer.on("connection", (socket)=>{
     socket["nickname"] = "Anon";
-    socket.on("join_room", (roomName, nickname, done) => {
+    socket.on("join_room", (roomName, nickname) => {
         socket.nickname = nickname
         socket.join(roomName);
-        done();
 
         socket.to(roomName).emit("welcome", socket.nickname, countRoom(roomName));
+    });
+    socket.on("offer", (offer, roomName) => {
+        socket.to(roomName).emit("offer", offer);
+    });
+    socket.on("answer", (answer, roomName) => {
+        socket.to(roomName).emit("answer", answer);
+    });
+    socket.on("ice", (ice, roomName) => {
+        socket.to(roomName).emit("ice", ice);
     });
 
     socket.on("exit_room", () => {

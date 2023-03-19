@@ -13,14 +13,15 @@ html(lang="en")
                     input(placeholder="Input room ID", required, type=text)
                     button Enter room
 
-            div#room 
+            div#call 
                 h3
                 ul
-                div#stream
+                div#myStream
                     video#myFace(autoplay, playsinline, width="400", height="400")
                     button#mute Mute
                     button#camera Turn Camera Off
                     select#cameras
+                    video#peerFace(autoplay,playsinline, width="400", height="400")
 
                 form#msg
                     input(placeholder="message",  type="text")
